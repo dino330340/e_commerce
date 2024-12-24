@@ -1,14 +1,33 @@
+import 'package:e_commerce/models/cart.dart';
 import 'package:e_commerce/models/shoe.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 import '../components/shoe_tile.dart';
 
-class ShopPage extends StatelessWidget {
+class ShopPage extends StatefulWidget {
   const ShopPage({super.key});
 
   @override
+  State<ShopPage> createState() => _ShopPageState();
+}
+
+class _ShopPageState extends State<ShopPage> {
+
+  void addShoeToCart(Shoe shoe) {
+    Provider.of<Cart>(context, listen: false).addItemToCart(shoe);
+
+    showDialog(context: context,
+        builder: (context) => AlertDialog(
+          title: Text('Successfully added!'),
+          content: Text('Check your cart'),
+        ),
+    );
+  }
+
+  @override
   Widget build(BuildContext context) {
-    return Column(
+    return Consumer<Cart>(builder: (context, value, child) => Column(
       children: [
         // search box
         Container(
@@ -52,7 +71,7 @@ class ShopPage extends StatelessWidget {
               Text(
                 'See all',
                 style:
-                    TextStyle(fontWeight: FontWeight.bold, color: Colors.blue),
+                TextStyle(fontWeight: FontWeight.bold, color: Colors.blue),
               ),
             ],
           ),
@@ -63,19 +82,20 @@ class ShopPage extends StatelessWidget {
 
         Expanded(
           child: ListView.builder(
+            itemCount: 4,
+            scrollDirection: Axis.horizontal,
             itemBuilder: (context, index) {
-              Shoe shoe = Shoe(
-                  name: 'Air Jordan',
-                  price: '240',
-                  imagePath: 'lib/images/black_air.jpg',
-                  description: 'Cool shoe');
+              Shoe shoe = value.getShoeLIst()[index];
               return ShoeTile(
                 shoe: shoe,
+                onTap: () => addShoeToCart(shoe),
               );
             },
           ),
-        )
-      ],
+        ),
+        const SizedBox(height: 30, width: 25,)
+      ]
+      ),
     );
   }
 }

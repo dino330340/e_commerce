@@ -22,7 +22,7 @@ class IntroPage extends StatelessWidget {
               ),
             ),
 
-            const SizedBox(height: 48),
+            const SizedBox(height: 35),
 
             Text(
               'Just Do IT',
@@ -37,11 +37,13 @@ class IntroPage extends StatelessWidget {
             const Text(
               'Brand new sneakers and custom kicks made with premium quality',
               style: TextStyle(
-                fontSize: 16,
+                fontSize: 14,
                 color: Colors.grey,
               ),
               textAlign: TextAlign.center,
             ),
+
+            const SizedBox(height: 15),
 
             GestureDetector(
               onTap: () => Navigator.push(

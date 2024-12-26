@@ -2,7 +2,6 @@ import 'package:e_commerce/models/cart.dart';
 import 'package:e_commerce/models/shoe.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-
 import '../components/shoe_tile.dart';
 
 class ShopPage extends StatefulWidget {

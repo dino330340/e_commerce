@@ -44,7 +44,7 @@ class ShoeTile extends StatelessWidget {
                     ) ,
                   ),
                   const SizedBox(height: 5),
-                  Text( '\$' + shoe.price,
+                  Text( '\$${shoe.price}',
                     style: TextStyle(
                       color: Colors.grey
                     ),

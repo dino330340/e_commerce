@@ -1,3 +1,4 @@
+import 'package:e_commerce/components/about_dialog.dart';
 import 'package:e_commerce/components/bottom_nav_bar.dart';
 import 'package:e_commerce/pages/intro_page.dart';
 import 'package:flutter/material.dart';
@@ -87,13 +88,18 @@ class _HomePageState extends State<HomePage> {
                     ),
                   ),
                 ),
-                const Padding(
-                  padding: EdgeInsets.only(left: 25),
-                  child: ListTile(
-                    leading: Icon(Icons.info, color: Colors.white),
-                    title: Text(
-                      'About',
-                      style: TextStyle(color: Colors.white),
+                GestureDetector(
+                  onTap: () {
+                    ShowAboutDialogBox(context);
+                  },
+                  child: const Padding(
+                    padding: EdgeInsets.only(left: 25),
+                    child: ListTile(
+                      leading: Icon(Icons.info, color: Colors.white),
+                      title: Text(
+                        'About',
+                        style: TextStyle(color: Colors.white),
+                      ),
                     ),
                   ),
                 ),
